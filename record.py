@@ -11,7 +11,7 @@ try:
     while True:
         data = stream.read(1024)
         frames.append(data)
-except KeyboardInterrupt:
+except KeyboardInterrupt:           # Change this condition to stop the stream
     pass
 
 stream.stop_stream()
