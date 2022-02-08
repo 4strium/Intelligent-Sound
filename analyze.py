@@ -9,14 +9,21 @@ current_dir = os.getcwd()
 
 file = current_dir + "\output\Mon_enregistrement.wav"
 
-# Create a "result" directory :
-    # Directory
-directory = "result"
+# Define a "result" directory :
+directory = "/result"
 
-# Create the directory
-# 'result' in
-# current directory
-os.mkdir(directory)
+path = current_dir + directory
+print(path)
+
+isExist = os.path.exists(path)      # Valeure booléenne
+
+print(isExist)
+
+if not isExist:
+    # Create the directory
+    # 'result' in
+    # current directory
+    os.mkdir(directory)
 
 
 signal, sample_rate = librosa.load(file, sr=22050) # sample rate * Time -> example -> 22050 * 30
