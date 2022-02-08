@@ -17,8 +17,6 @@ print(path)
 
 isExist = os.path.exists(path)      # Valeure booléenne
 
-print(isExist)
-
 if not isExist:
     # Create the directory
     # 'result' in
