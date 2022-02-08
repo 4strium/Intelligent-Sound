@@ -2,24 +2,31 @@ import librosa, librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 
+FIG_SIZE = (15,10)
+
 file = "Mon_enregistrement.wav"
 
-# waveform :
 signal, sample_rate = librosa.load(file, sr=22050) # sample rate * Time -> example -> 22050 * 30
-librosa.display.waveshow(signal, sr=sample_rate)
-plt.xlabel("Temps")                            # Nom de l'axe x
+
+# waveform :
+plt.figure(figsize=FIG_SIZE)
+librosa.display.waveshow(signal, sr=sample_rate, alpha=0.6)
+plt.xlabel("Temps (en secondes)")                            # Nom de l'axe x
 plt.ylabel("Amplitude")                        # Nom de l'axe y
-plt.show()
+plt.title("Ondes")
+plt.savefig('ondes.png', bbox_inches='tight')
 
 #fft -> spectrum :
 fft = np.fft.fft(signal)
 
 magnitude = np.abs(fft)
 frequency = np.linspace(0, sample_rate, len(magnitude))
+plt.figure(figsize=FIG_SIZE)
 plt.plot(frequency, magnitude)
 plt.xlabel("Frequence")                            # Nom de l'axe x
 plt.ylabel("Magnitude")                            # Nom de l'axe y
-plt.show()
+plt.title("Spectre Audio")
+plt.savefig('spectre_audio.png', bbox_inches='tight')
 
 # stft -> spectrogram :
 
@@ -31,16 +38,21 @@ spectrogram = np.abs(stft)
 
 log_spectrogram = librosa.amplitude_to_db(spectrogram)
 
+plt.figure(figsize=FIG_SIZE)
 librosa.display.specshow(log_spectrogram, sr=sample_rate, hop_length=hop_length)
 plt.xlabel("Temps")                            # Nom de l'axe x
 plt.ylabel("Frequence")                        # Nom de l'axe y
-plt.colorbar()
-plt.show()
+plt.colorbar(format="%+2.0f dB")
+plt.title("Spectrogram (DeciBel)")
+plt.savefig('spectrogram.png', bbox_inches='tight')
 
-# MFFCs :
-MFCCs = librosa.feature.mfcc(signal, sample_rate, n_fft=n_fft, hop_length=hop_length, n_mfcc=13)
+# MFCCs :
+MFCCs = librosa.feature.mfcc(y=signal, n_fft=n_fft, hop_length=hop_length, n_mfcc=13)
+
+plt.figure(figsize=FIG_SIZE)
 librosa.display.specshow(MFCCs, sr=sample_rate, hop_length=hop_length)
-plt.xlabel("Temps")                            # Nom de l'axe x
-plt.ylabel("MFCC")                             # Nom de l'axe y
+plt.xlabel("Time")
+plt.ylabel("MFCC coefficients")
 plt.colorbar()
-plt.show()
+plt.title("Spectre de puissance à court terme d'un son")
+plt.savefig('MFCC.png', bbox_inches='tight')
