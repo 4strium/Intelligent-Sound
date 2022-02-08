@@ -20,3 +20,17 @@ plt.plot(frequency, magnitude)
 plt.xlabel("Frequence")                            # Nom de l'axe x
 plt.ylabel("Magnitude")                        # Nom de l'axe y
 plt.show()
+
+# stft -> spectrogram :
+
+n_fft = 2048 
+hop_length = 512
+
+stft = librosa.core.stft(signal, hop_length=hop_length, n_fft=n_fft)
+spectrogram = np.abs(stft)
+
+librosa.display.specshow(spectrogram, sr=sr, hop_length=hop_length)
+plt.xlabel("Temps")                            # Nom de l'axe x
+plt.ylabel("Frequence")                        # Nom de l'axe y
+plt.colorbar()
+plt.show()
