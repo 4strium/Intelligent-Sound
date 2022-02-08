@@ -1,10 +1,23 @@
 import librosa, librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 FIG_SIZE = (15,10)
 
-file = "Mon_enregistrement.wav"
+current_dir = os.getcwd()
+
+file = current_dir + "\output\Mon_enregistrement.wav"
+
+# Create a "result" directory :
+    # Directory
+directory = "result"
+
+# Create the directory
+# 'result' in
+# current directory
+os.mkdir(directory)
+
 
 signal, sample_rate = librosa.load(file, sr=22050) # sample rate * Time -> example -> 22050 * 30
 
@@ -14,7 +27,7 @@ librosa.display.waveshow(signal, sr=sample_rate, alpha=0.6)
 plt.xlabel("Temps (en secondes)")                            # Nom de l'axe x
 plt.ylabel("Amplitude")                        # Nom de l'axe y
 plt.title("Ondes")
-plt.savefig('ondes.png', bbox_inches='tight')
+plt.savefig(current_dir + '/result/ondes.png', bbox_inches='tight')
 
 #fft -> spectrum :
 fft = np.fft.fft(signal)
@@ -26,7 +39,7 @@ plt.plot(frequency, magnitude)
 plt.xlabel("Frequence")                            # Nom de l'axe x
 plt.ylabel("Magnitude")                            # Nom de l'axe y
 plt.title("Spectre Audio")
-plt.savefig('spectre_audio.png', bbox_inches='tight')
+plt.savefig(current_dir + '/result/spectre_audio.png', bbox_inches='tight')
 
 # stft -> spectrogram :
 
@@ -44,7 +57,7 @@ plt.xlabel("Temps")                            # Nom de l'axe x
 plt.ylabel("Frequence")                        # Nom de l'axe y
 plt.colorbar(format="%+2.0f dB")
 plt.title("Spectrogram (DeciBel)")
-plt.savefig('spectrogram.png', bbox_inches='tight')
+plt.savefig(current_dir + '/result/spectrogram.png', bbox_inches='tight')
 
 # MFCCs :
 MFCCs = librosa.feature.mfcc(y=signal, n_fft=n_fft, hop_length=hop_length, n_mfcc=13)
@@ -55,4 +68,4 @@ plt.xlabel("Time")
 plt.ylabel("MFCC coefficients")
 plt.colorbar()
 plt.title("Spectre de puissance à court terme d'un son")
-plt.savefig('MFCC.png', bbox_inches='tight')
+plt.savefig(current_dir + '/result/MFCC.png', bbox_inches='tight')
