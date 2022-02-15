@@ -21,7 +21,7 @@ if not isExist:
     # Create the directory
     # 'result' in
     # current directory
-    os.mkdir(directory)
+    os.mkdir(path)
 
 
 signal, sample_rate = librosa.load(file, sr=22050) # sample rate * Time -> example -> 22050 * 30
