@@ -24,8 +24,12 @@ shutil.copy(original3, target)
 original4 = current_dir + "\\result\MFCC.png"
 shutil.copy(original4, target)
 
-time.sleep(10)
+exec(open("reconnaissance.py").read())
+
+time.sleep(5)
 
 new = 2 # open in a new tab, if possible
 url = current_dir + "/index.html"
 webbrowser.open(url,new=new)
+
+webbrowser.open("rapport.txt")
