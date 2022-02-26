@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import os
 from deep_translator import GoogleTranslator
+from gtts import gTTS
+import vlc
 
 current_dir = os.getcwd()
 
@@ -40,3 +42,16 @@ dataca = GoogleTranslator(source='fr', target='ca').translate(datafr)
 file.write("Je l'ai traduit en catalan : " + dataca + 2*"\n")
 
 file.close()
+
+langue = 'fr'
+
+myobj = gTTS(text=datafr, lang=langue, slow=False)
+
+myobj.save("speech.mp3")
+
+p = vlc.MediaPlayer( current_dir + "/speech.mp3")
+
+command = str(input("Voulez-vous lire la phrase reconnue ? \n"))
+
+if command == 'oui' :
+    p.play()

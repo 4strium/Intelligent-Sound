@@ -23,6 +23,12 @@ stream = audio.open(format=pyaudio.paInt16, channels=1, rate=44100, input=True, 
 
 frames = []
 
+print("-------------------------------------------------")
+print("Parlez maintenant...")
+print("-------------------------------------------------")
+print("Si vous avez termine appuyez sur : Crtl+C !")
+print("-------------------------------------------------")
+
 try:
     while True:
         data = stream.read(1024)
