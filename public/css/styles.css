@@ -15,7 +15,7 @@ h1 {
     text-align: center;
     background: -webkit-linear-gradient(#1b75ff, #7b00ff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent
+    -webkit-text-fill-color: transparent;
 }
 
 .image-grid {
