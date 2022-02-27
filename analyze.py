@@ -13,7 +13,8 @@ file = current_dir + "\output\Mon_enregistrement.wav"
 directory = "/result"
 
 path = current_dir + directory
-print(path)
+print("Le fichier audio est en cours d'analyse, veuillez patienter svp...")
+print("-------------------------------------------------")
 
 isExist = os.path.exists(path)      # Valeure booléenne
 
