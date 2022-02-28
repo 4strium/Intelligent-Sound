@@ -26,7 +26,7 @@ shutil.copy(original4, target)
 
 exec(open("reconnaissance.py").read())
 
-time.sleep(5)
+time.sleep(2)
 
 new = 2 # open in a new tab, if possible
 url = current_dir + "/index.html"
