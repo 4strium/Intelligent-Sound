@@ -54,7 +54,10 @@ p = vlc.MediaPlayer( current_dir + "/speech.mp3")
 instance = vlc.Instance()
 instance.log_unset()
 
-command = str(input("Voulez-vous lire la phrase reconnue ? \n"))
+print("-----------------------------------------------------------")
+command = str(input("Do you want to read the recognized sentence? \n"))
 
-if command == 'oui' :
+if command == 'yes' :
     p.play()
+else :
+    pass
