@@ -13,8 +13,9 @@ file = current_dir + "\output\Mon_enregistrement.wav"
 directory = "/result"
 
 path = current_dir + directory
-print("Le fichier audio est en cours d'analyse, veuillez patienter svp...")
-print("-------------------------------------------------")
+print("Your audio file is being analyzed !")
+print("Please wait...")
+print("-----------------------------------------------------------")
 
 isExist = os.path.exists(path)      # Valeure booléenne
 

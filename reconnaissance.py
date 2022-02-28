@@ -51,6 +51,9 @@ myobj.save("speech.mp3")
 
 p = vlc.MediaPlayer( current_dir + "/speech.mp3")
 
+instance = vlc.Instance()
+instance.log_unset()
+
 command = str(input("Voulez-vous lire la phrase reconnue ? \n"))
 
 if command == 'oui' :
